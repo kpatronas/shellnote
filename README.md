@@ -24,7 +24,7 @@ chmod +x install.sh
 ```
 This will:
 
-Move shellnote.sh to ~/.shellnote/shellnote.sh
+Move shellnote.sh to ~/.shellnote/shellnote
 
 Add ~/.shellnote to your PATH
 

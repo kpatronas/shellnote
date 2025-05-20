@@ -107,14 +107,3 @@ File format (comma-separated):
 
 📦 .deb packaging
 
-🛠 Uninstall (Manual)
-For local install:
-```
-rm -rf ~/.shellnote
-sed -i '/shellnote.sh/d' ~/.bashrc ~/.zshrc
-```
-For system-wide install:
-```
-sudo rm /usr/local/bin/shellnote
-sudo sed -i '/shellnote/d' /etc/bash.bashrc /etc/zsh/zshrc
-```

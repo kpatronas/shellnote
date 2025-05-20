@@ -79,7 +79,6 @@ This is added automatically during install. To do it manually:
 Add this to your .bashrc, .zshrc, or system-wide shell config:
 ```
 export PATH="$HOME/.shellnote:$PATH"
-alias shellnote="shellnote.sh"
 # Run shellnote on terminal start (interactive only)
 if [[ $- == *i* ]]; then
     if command -v shellnote >/dev/null 2>&1; then

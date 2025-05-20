@@ -55,30 +55,21 @@ shellnote --new "Drink water" --expire 1h
 ```
 Valid time formats:
 
-5m → 5 minutes
+* 5m → 5 minutes
 
-2h → 2 hours
+* 2h → 2 hours
 
-1d → 1 day
+* 1d → 1 day
 
 📋 View active (non-expired) notes
-bash
-Copy
-Edit
 ```
 shellnote
 ```
 📜 View all notes (active + expired)
-bash
-Copy
-Edit
 ```
 shellnote --listall
 ```
 🗑️ Delete a note interactively
-bash
-Copy
-Edit
 ```
 shellnote --delete
 ```
@@ -88,10 +79,6 @@ You'll see a menu to choose which note to delete.
 This is added automatically during install. To do it manually:
 
 Add this to your .bashrc, .zshrc, or system-wide shell config:
-
-bash
-Copy
-Edit
 ```
 if command -v shellnote >/dev/null 2>&1; then
     shellnote
@@ -105,11 +92,9 @@ Per-user install: ~/.shellnote/
 System-wide install: still saved under each user’s ~/.shellnote/
 
 File format (comma-separated):
-
-php-template
-Copy
-Edit
+```
 <created_epoch>,<expire_epoch>,<note content>
+```
 🧹 Future Ideas
 ⏱ Auto-clean expired notes
 
@@ -121,18 +106,11 @@ Edit
 
 🛠 Uninstall (Manual)
 For local install:
-
-bash
-Copy
-Edit
 ```
 rm -rf ~/.shellnote
 sed -i '/shellnote.sh/d' ~/.bashrc ~/.zshrc
 ```
 For system-wide install:
-bash
-Copy
-Edit
 ```
 sudo rm /usr/local/bin/shellnote
 sudo sed -i '/shellnote/d' /etc/bash.bashrc /etc/zsh/zshrc

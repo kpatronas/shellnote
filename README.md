@@ -78,8 +78,13 @@ This is added automatically during install. To do it manually:
 
 Add this to your .bashrc, .zshrc, or system-wide shell config:
 ```
-if command -v shellnote >/dev/null 2>&1; then
-    shellnote
+export PATH="$HOME/.shellnote:$PATH"
+alias shellnote="shellnote.sh"
+# Run shellnote on terminal start (interactive only)
+if [[ $- == *i* ]]; then
+    if command -v shellnote >/dev/null 2>&1; then
+        shellnote
+    fi
 fi
 ```
 📁 Note Storage

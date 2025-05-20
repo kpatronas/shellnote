@@ -6,9 +6,19 @@ SCRIPT_NAME="shellnote.sh"
 LOCAL_DIR="$HOME/.shellnote"
 LOCAL_PATH="$LOCAL_DIR/$SCRIPT_NAME"
 SYSTEM_PATH="/usr/local/bin/shellnote"
-STARTUP_LINE='if command -v shellnote >/dev/null 2>&1; then shellnote; fi'
+
+# Lines to be added to .bashrc/.zshrc (in proper order)
 PATH_LINE='export PATH="$HOME/.shellnote:$PATH"'
 ALIAS_LINE='alias shellnote="shellnote.sh"'
+STARTUP_BLOCK=$(cat <<'EOF'
+# Run shellnote on terminal start (interactive only)
+if [[ $- == *i* ]]; then
+    if command -v shellnote >/dev/null 2>&1; then
+        shellnote
+    fi
+fi
+EOF
+)
 
 echo "🔧 Starting ShellNote installation..."
 
@@ -24,8 +34,8 @@ if [[ "$EUID" -eq 0 ]]; then
     chmod +x "$SYSTEM_PATH"
 
     echo "✅ Installed to $SYSTEM_PATH"
-    echo "ℹ️ No shell config files were modified."
-    echo "🧪 You can now run 'shellnote' globally."
+    echo "ℹ️ No shell configuration files were modified (clean system-wide install)."
+    echo "🧪 Try: shellnote --listall"
 
 else
     echo "👤 Performing local install for user: $USER"
@@ -44,14 +54,17 @@ else
     RC_FILES=("$HOME/.bashrc" "$HOME/.zshrc")
     for rc in "${RC_FILES[@]}"; do
         if [ -f "$rc" ]; then
+            # Add export PATH
             grep -qxF "$PATH_LINE" "$rc" || echo "$PATH_LINE" >> "$rc"
+            # Add alias
             grep -qxF "$ALIAS_LINE" "$rc" || echo "$ALIAS_LINE" >> "$rc"
-            grep -qxF "$STARTUP_LINE" "$rc" || echo "$STARTUP_LINE" >> "$rc"
-            echo "📎 Updated $rc with PATH, alias, and startup hook"
+            # Add startup block (exact match)
+            grep -qxF "$STARTUP_BLOCK" "$rc" || echo "$STARTUP_BLOCK" >> "$rc"
+            echo "📎 Updated $rc with PATH, alias, and startup note display"
         fi
     done
 
     echo "✅ Local install complete."
-    echo "💡 Run: source ~/.bashrc or ~/.zshrc"
+    echo "💡 Run: source ~/.bashrc or source ~/.zshrc"
     echo "🧪 Then try: shellnote --listall"
 fi

@@ -65,17 +65,23 @@ Valid time formats:
 bash
 Copy
 Edit
+```
 shellnote
+```
 📜 View all notes (active + expired)
 bash
 Copy
 Edit
+```
 shellnote --listall
+```
 🗑️ Delete a note interactively
 bash
 Copy
 Edit
+```
 shellnote --delete
+```
 You'll see a menu to choose which note to delete.
 
 🧠 Auto-run on Terminal Start (Optional)
@@ -86,9 +92,11 @@ Add this to your .bashrc, .zshrc, or system-wide shell config:
 bash
 Copy
 Edit
+```
 if command -v shellnote >/dev/null 2>&1; then
     shellnote
 fi
+```
 📁 Note Storage
 Notes are saved as .txt files in:
 
@@ -117,12 +125,15 @@ For local install:
 bash
 Copy
 Edit
+```
 rm -rf ~/.shellnote
 sed -i '/shellnote.sh/d' ~/.bashrc ~/.zshrc
+```
 For system-wide install:
-
 bash
 Copy
 Edit
+```
 sudo rm /usr/local/bin/shellnote
 sudo sed -i '/shellnote/d' /etc/bash.bashrc /etc/zsh/zshrc
+```

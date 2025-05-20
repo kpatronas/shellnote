@@ -44,8 +44,6 @@ Copy shellnote.sh to /usr/local/bin/shellnote
 
 Make it executable globally
 
-Append automatic ShellNote execution to /etc/bash.bashrc and /etc/zsh/zshrc
-
 🧪 You can now run shellnote from any terminal, for any user.
 
 ⚙️ Usage
